@@ -1,0 +1,93 @@
+	 MultiLine Comment : /* sum of natural numbers using for loop*/
+
+	 Preprocessor directory : #include<stdio.h>
+
+	 keywords : int		 identifier : main
+	 separator : (
+	 separator : )
+	 separator : {
+	 keywords : int		 identifier : n
+	 separator : ,
+	 identifier : i
+	 separator : ,
+	 identifier : sum
+	 operator : =
+	 integer : 0
+	 separator : ;
+	 single line comment : //loop starts here
+
+	 keywords : for
+	 separator : (
+	 identifier: i
+	 operator : =
+	 integer : 1
+	 separator : ;
+	 identifier: i
+	 operator : <=
+	 identifier: n
+	 separator : ;
+	 identifier: i
+	 operator : ++
+	 separator : )
+	 separator : {
+	 identifier: sum
+	 operator : =
+	 identifier: sum
+	 operator : +
+	 identifier: i
+	 separator : ;
+	 separator : }
+	 keywords : return
+	 integer : 0
+	 separator : ;
+	 separator : }
+
+ total no. of token = 28
+Line no. 	 Token no. 	 Token 	 Lexeme
+
+      1		       0		 Operator	       /
+      1		       1		 Operator	       *
+      1		       2		 Identifier	     sum
+      1		       3		 Identifier	      of
+      1		       4		 Identifier	 natural
+      1		       5		 Identifier	 numbers
+      1		       6		 Identifier	   using
+      1		       7		 Identifier	     for
+      1		       8		 Identifier	    loop
+      1		       9		 Operator	       /
+      2		      10		 Identifier	 include
+      2		      11		 Identifier	   stdio
+      2		      12		 Identifier	       h
+      3		      13		 Keyword	     int
+      3		      14		 Keyword	    main
+      3		      15		 Special symbol	       )
+      4		      16		 Special symbol	       {
+      4		      17		 Keyword	     int
+      4		      18		 Identifier	       n
+      4		      19		 Identifier	       i
+      4		      20		 Identifier	     sum
+      4		      21		 Digit		       0
+      4		      22		 Special symbol	       ;
+      6		      23		 Operator	       /
+      6		      24		 Operator	       /
+      6		      25		 Identifier	    loop
+      6		      26		 Identifier	  starts
+      6		      27		 Identifier	    here
+      6		      28		 Identifier	     for
+      6		      29		 Identifier	       i
+      6		      30		 Digit		       1
+      6		      31		 Special symbol	       ;
+      6		      32		 Identifier	       i
+      6		      33		 Identifier	       n
+      6		      34		 Identifier	       i
+      6		      35		 Operator	       +
+      6		      36		 Special symbol	       )
+      7		      37		 Special symbol	       {
+      8		      38		 Identifier	     sum
+      8		      39		 Identifier	     sum
+      8		      40		 Identifier	       i
+      9		      41		 Special symbol	       }
+     11		      42		 Identifier	  return
+     11		      43		 Digit		       0
+     11		      44		 Special symbol	       ;
+     12		      45		 Special symbol	       }

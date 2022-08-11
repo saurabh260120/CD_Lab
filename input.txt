@@ -1,0 +1,14 @@
+/* sum of natural numbers using for loop*/
+#include<stdio.h>
+int main()
+{int n,i,sum=0;
+
+//loop starts here
+for(i=1;i<=n;i++)
+{
+sum=sum+i;
+}
+
+return 0;
+}
+
