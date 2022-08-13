@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
-int n = 0, limit = 0, line= 0,c=0,in_comment=0; 
+int n = 0,line= 0,limit=0; 
 char identifiers[100][100];
 int identify = 0;
 %} 
@@ -11,16 +11,17 @@ int identify = 0;
 \n {line++;}
 "#".*">"\n {fprintf(yyout,"\t Preprocessor directory : %s\n",yytext);}
 [/]{1}[*]{1}.*[*]{1}[/]{1}\n {fprintf(yyout,"\t MultiLine Comment : %s\n",yytext);}
+\"(\\.|[^"\\])*\" {n++,fprintf(yyout,"\t String literal : %s\n",yytext);}
 
 [/]{1}[*]{1}.*\n {fprintf(yyout,"\t error MultiLine Comment : %s\n",yytext);
 return 0;}
 
-"//".*\n { ++c; fprintf(yyout,"\t single line comment : %s\n",yytext); }
+"//".*\n {fprintf(yyout,"\t single line comment : %s\n",yytext); }
 
-"//".* { ++c; fprintf(yyout,"\t error single line comment : %s\n",yytext); }
+"//".* { fprintf(yyout,"\t error single line comment : %s\n",yytext); }
 
 
-"while"|"if"|"else"|"for"|"printf"|"scanf"|"return" {n++;fprintf(yyout,"\t keywords : %s\n", yytext);} 
+"while"|"if"|"else"|"for"|"printf"|"scanf"|"return"|"main" {n++;fprintf(yyout,"\t keywords : %s\n", yytext);} 
 
 "int"|"float" {n++;fprintf(yyout,"\t keywords : %s\t", yytext); 
 	if(strcmp(yytext, "int") == 0) {
@@ -54,7 +55,7 @@ if(identify) {
 
 "<="|"=="|"="|"++"|"-"|"*"|"+"|">=" {n++;fprintf(yyout,"\t operator : %s\n", yytext);} 
 
-[(){}|,;] {n++;fprintf(yyout,"\t separator : %s\n", yytext); 
+[(){}|,;] {n++;fprintf(yyout,"\t special symbol : %s\n", yytext); 
 if(strcmp(yytext, ";")== 0){
 identify = 0;
 limit++;
@@ -66,10 +67,7 @@ if(strcmp(yytext, ",") == 0) {
 
 [0-9]*"."[0-9]+ {n++;fprintf(yyout,"\t float : %s\n", yytext);} 
 
-[0-9]+ {n++;fprintf(yyout,"\t integer : %s\n", yytext);}
-
-"return 0;}" {n++;n++;n++;fprintf(yyout,"\t program termination : %s\n", yytext);
-return 0;}	
+[0-9]+ {n++;fprintf(yyout,"\t integer : %s\n", yytext);}	
 
 . {fprintf(yyout,"");}
 
@@ -93,14 +91,50 @@ int j=0;
 int i,flag;
 char ch,str[20];
 
-char keyword[30][30] = {"int","main","if","else","do","while"};
+char keyword[30][30] = {"int","main","if","else","do","while","for","printf","scanf"};
 fprintf(yyout,"Line no. \t Token no. \t Token \t Lexeme\n\n");
 while(!feof(yyin))
 {
 i=0;
 flag=0;
 ch=fgetc(yyin);
-if( ch=='+' || ch== '-' || ch=='*' || ch=='/' )
+if(ch=='#')
+{
+str[i]=ch;
+i++;
+ch=fgetc(yyin);
+while(ch!='>')
+{
+str[i]=ch;
+i++;
+ch=fgetc(yyin);
+}
+str[i++]='>';
+str[i]='\0';
+fprintf(yyout,"%7d\t\t %7d\t\t Preprocessor directory\t %7s\n",l,t,str);
+
+}
+
+else if(ch=='"')
+{
+str[i]=ch;
+i++;
+ch=fgetc(yyin);
+while(ch!='"')
+{
+str[i]=ch;
+i++;
+ch=fgetc(yyin);
+}
+str[i++]='"';
+str[i]='\0';
+fprintf(yyout,"%7d\t\t %7d\t\t String literal\t %7s\n",l,t,str);
+
+}
+
+
+
+else if( ch=='+' || ch== '-' || ch=='*' || ch=='/' )
 {
 fprintf(yyout,"%7d\t\t %7d\t\t Operator\t %7c\n",l,t,ch);
 t++;
@@ -118,6 +152,7 @@ else if(isdigit(ch))
 fprintf(yyout,"%7d\t\t %7d\t\t Digit\t\t %7c\n",l,t,ch);
 t++;
 }
+
 else if(isalpha(ch))
 {
 str[i]=ch;

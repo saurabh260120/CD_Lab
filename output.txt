@@ -1,93 +1,84 @@
-	 MultiLine Comment : /* sum of natural numbers using for loop*/
-
 	 Preprocessor directory : #include<stdio.h>
 
-	 keywords : int		 identifier : main
-	 separator : (
-	 separator : )
-	 separator : {
+	 Preprocessor directory : #include<stdlib.h>
+
+	 keywords : int		 keywords : main
+	 special symbol : (
+	 special symbol : )
 	 keywords : int		 identifier : n
-	 separator : ,
+	 special symbol : ,
 	 identifier : i
-	 separator : ,
+	 special symbol : ,
 	 identifier : sum
 	 operator : =
 	 integer : 0
-	 separator : ;
-	 single line comment : //loop starts here
-
+	 special symbol : ;
 	 keywords : for
-	 separator : (
+	 special symbol : (
 	 identifier: i
 	 operator : =
 	 integer : 1
-	 separator : ;
+	 special symbol : ;
 	 identifier: i
 	 operator : <=
 	 identifier: n
-	 separator : ;
+	 special symbol : ;
 	 identifier: i
 	 operator : ++
-	 separator : )
-	 separator : {
+	 special symbol : )
+	 special symbol : {
 	 identifier: sum
 	 operator : =
 	 identifier: sum
 	 operator : +
 	 identifier: i
-	 separator : ;
-	 separator : }
+	 special symbol : ;
+	 special symbol : }
+	 keywords : printf
+	 special symbol : (
+	 String literal : "sum=%d"
+	 special symbol : ,
+	 identifier: sum
+	 special symbol : )
+	 special symbol : ;
 	 keywords : return
 	 integer : 0
-	 separator : ;
-	 separator : }
+	 special symbol : ;
+	 special symbol : }
 
- total no. of token = 28
+ total no. of token = 34
 Line no. 	 Token no. 	 Token 	 Lexeme
 
-      1		       0		 Operator	       /
-      1		       1		 Operator	       *
-      1		       2		 Identifier	     sum
-      1		       3		 Identifier	      of
-      1		       4		 Identifier	 natural
-      1		       5		 Identifier	 numbers
-      1		       6		 Identifier	   using
-      1		       7		 Identifier	     for
-      1		       8		 Identifier	    loop
-      1		       9		 Operator	       /
-      2		      10		 Identifier	 include
-      2		      11		 Identifier	   stdio
-      2		      12		 Identifier	       h
-      3		      13		 Keyword	     int
-      3		      14		 Keyword	    main
-      3		      15		 Special symbol	       )
-      4		      16		 Special symbol	       {
-      4		      17		 Keyword	     int
-      4		      18		 Identifier	       n
-      4		      19		 Identifier	       i
-      4		      20		 Identifier	     sum
-      4		      21		 Digit		       0
-      4		      22		 Special symbol	       ;
-      6		      23		 Operator	       /
-      6		      24		 Operator	       /
-      6		      25		 Identifier	    loop
-      6		      26		 Identifier	  starts
-      6		      27		 Identifier	    here
-      6		      28		 Identifier	     for
-      6		      29		 Identifier	       i
-      6		      30		 Digit		       1
-      6		      31		 Special symbol	       ;
-      6		      32		 Identifier	       i
-      6		      33		 Identifier	       n
-      6		      34		 Identifier	       i
-      6		      35		 Operator	       +
-      6		      36		 Special symbol	       )
-      7		      37		 Special symbol	       {
-      8		      38		 Identifier	     sum
-      8		      39		 Identifier	     sum
-      8		      40		 Identifier	       i
-      9		      41		 Special symbol	       }
-     11		      42		 Identifier	  return
-     11		      43		 Digit		       0
-     11		      44		 Special symbol	       ;
-     12		      45		 Special symbol	       }
+      1		       0		 Preprocessor directory	 #include<stdio.h>
+      2		       0		 Preprocessor directory	 #include<stdlib.h>
+      3		       0		 Keyword	     int
+      3		       1		 Keyword	    main
+      3		       2		 Special symbol	       )
+      4		       3		 Keyword	     int
+      4		       4		 Identifier	       n
+      4		       5		 Identifier	       i
+      4		       6		 Identifier	     sum
+      4		       7		 Digit		       0
+      4		       8		 Special symbol	       ;
+      5		       9		 Keyword	     for
+      5		      10		 Identifier	       i
+      5		      11		 Digit		       1
+      5		      12		 Special symbol	       ;
+      5		      13		 Identifier	       i
+      5		      14		 Identifier	       n
+      5		      15		 Identifier	       i
+      5		      16		 Operator	       +
+      5		      17		 Special symbol	       )
+      6		      18		 Special symbol	       {
+      7		      19		 Identifier	     sum
+      7		      20		 Identifier	     sum
+      7		      21		 Identifier	       i
+      8		      22		 Special symbol	       }
+      9		      23		 Keyword	  printf
+      9		      24		 String literal	 "sum=%d"
+      9		      24		 Identifier	     sum
+      9		      25		 Special symbol	       ;
+     10		      26		 Identifier	  return
+     10		      27		 Digit		       0
+     10		      28		 Special symbol	       ;
+     11		      29		 Special symbol	       }
