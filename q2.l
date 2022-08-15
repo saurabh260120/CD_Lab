@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
+char *yylval;
 int n = 0,line= 0,limit=0; 
 char identifiers[100][100];
 int identify = 0;
@@ -11,7 +12,10 @@ int identify = 0;
 \n {line++;}
 "#".*">"\n {fprintf(yyout,"\t Preprocessor directory : %s\n",yytext);}
 [/]{1}[*]{1}.*[*]{1}[/]{1}\n {fprintf(yyout,"\t MultiLine Comment : %s\n",yytext);}
-\"(\\.|[^"\\])*\" {n++,fprintf(yyout,"\t String literal : %s\n",yytext);}
+
+\"(\\.|[^"\\])*\" {n++,fprintf(yyout,"\t String literal : %s\n",yytext);} 
+\"(\\.|[^"\\])*\n {n++,fprintf(yyout,"\t error String literal : %s\n",yytext);} 
+
 
 [/]{1}[*]{1}.*\n {fprintf(yyout,"\t error MultiLine Comment : %s\n",yytext);
 return 0;}
@@ -67,7 +71,8 @@ if(strcmp(yytext, ",") == 0) {
 
 [0-9]*"."[0-9]+ {n++;fprintf(yyout,"\t float : %s\n", yytext);} 
 
-[0-9]+ {n++;fprintf(yyout,"\t integer : %s\n", yytext);}	
+[0-9]+ {n++;fprintf(yyout,"\t integer : %s\n", yytext);}
+
 
 . {fprintf(yyout,"");}
 
